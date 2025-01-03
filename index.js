@@ -6,6 +6,11 @@ const port = 3000;
 
 var app = express();
 
+
+app.get('/', (req, res) => {
+  return res.send('hello world');
+});
+
 app.post('/upload', (req, res) => {
     var storage = multer.diskStorage({ 
         destination: (req, file, callback) => {
@@ -38,7 +43,7 @@ app.post('/upload', (req, res) => {
             await sleep(8000);
             var nome_320 = req.file.originalname.replace('128', '320');
 
-            return  res.sendFile(`public/${nome_320}`, { root: __dirname });
+            return  res.sendFile(`${nome_320}`, { root: 'public' });
              
           }
 
